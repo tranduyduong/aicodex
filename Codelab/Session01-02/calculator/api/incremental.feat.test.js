@@ -1,6 +1,7 @@
 require('./helpers');
 const { isIncremental } = require('./controller');
 
+// black test suite
 describe('isIncremental Function', () => {
   it('returns true for a string of 4 incremental digits', () => {
     expect(isIncremental('1234')).to.eql(true);

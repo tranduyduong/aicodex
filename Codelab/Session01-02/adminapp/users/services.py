@@ -15,6 +15,7 @@ class UserService:
 
     @staticmethod
     def create_user(name, email):
+        # clean code ---> create DTO Object
         user = User(name=name, email=email)
         UserRepository.create(user)
         return user
