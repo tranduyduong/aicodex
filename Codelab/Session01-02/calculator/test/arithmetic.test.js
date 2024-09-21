@@ -142,6 +142,6 @@ describe('Arithmetic', function () {
                     done();
                 });
         });
-    };
+    });
 
 });
