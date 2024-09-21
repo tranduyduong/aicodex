@@ -1,5 +1,32 @@
 'use strict';
 
+/**
+ * Checks if the input is a string of 4 or more incremental digits.
+ *
+ * @param {string} input - The input string to be checked.
+ * @returns {boolean} - Returns true if the input is a string of 4 or more incremental digits, otherwise false.
+ */
+function isIncremental(input) {
+  // Check if input is a string of 4 or more digits
+  if (!/^\d{4,}$/.test(input)) {
+    return false;
+  }
+
+  // Convert the string to an array of digits
+  const digits = Array.from(input, Number);
+
+  // Check if the digits are incremental
+  for (let i = 1; i < digits.length; i++) {
+    if (digits[i] !== digits[i - 1] + 1) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+exports.isIncremental = isIncremental;
+
 exports.calculate = function(req, res) {
   req.app.use(function(err, _req, res, next) {
     if (res.headersSent) {
@@ -10,44 +37,11 @@ exports.calculate = function(req, res) {
     res.json({ error: err.message });
   });
 
-  // TODO: Add operator
-  var operations = {
-    'add':      function(a, b) { return Number(a) + Number(b) },
-    'subtract': function(a, b) { return Number(a) - Number(b) },
-    'multiply': function(a, b) { return Number(a) * Number(b) },
-  };
-
-  /**
-   * Checks if the input is a string of 4 or more incremental digits.
-   *
-   * @param {string} input - The input string to be checked.
-   * @returns {boolean} - Returns true if the input is a string of 4 or more incremental digits, otherwise false.
-   */
-  exports.isIncremental =  function isIncremental(input) {
-    // Check if input is a string of 4 or more digits
-    if (!/^\d{4,}$/.test(input)) {
-      return false;
-    }
-
-    // Convert the string to an array of digits
-    const digits = Array.from(input, Number);
-
-    // Check if the digits are incremental
-    for (let i = 1; i < digits.length; i++) {
-      if (digits[i] !== digits[i - 1] + 1) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
   if (!req.query.operation) {
     throw new Error("Unspecified operation");
   }
 
   var operation = operations[req.query.operation];
-
   if (!operation) {
     throw new Error("Invalid operation: " + req.query.operation);
   }
