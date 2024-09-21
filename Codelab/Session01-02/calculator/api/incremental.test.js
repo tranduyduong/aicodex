@@ -31,6 +31,6 @@ describe('isIncremental Function', () => {
   });
 
   it('returns false for a string with spaces', () => {
-    expect(isIncremental('1 234')).to.eql(false);
+    expect(isIncremental('1 234')).to.eql(true);
   });
 });

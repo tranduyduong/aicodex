@@ -1,12 +1,16 @@
 'use strict';
 
 /**
+ * Helper for Controller
  * Checks if the input is a string of 4 or more incremental digits.
  *
  * @param {string} input - The input string to be checked.
  * @returns {boolean} - Returns true if the input is a string of 4 or more incremental digits, otherwise false.
  */
 function isIncremental(input) {
+  // strip spaces
+    input = input.replace(/\s/g, '');
+
   // Check if input is a string of 4 or more digits
   if (!/^\d{4,}$/.test(input)) {
     return false;
