@@ -23,7 +23,7 @@ exports.calculate = function(req, res) {
    * @param {string} input - The input string to be checked.
    * @returns {boolean} - Returns true if the input is a string of 4 or more incremental digits, otherwise false.
    */
-  function isIncremental(input) {
+  exports.isIncremental =  function isIncremental(input) {
     // Check if input is a string of 4 or more digits
     if (!/^\d{4,}$/.test(input)) {
       return false;
@@ -66,3 +66,4 @@ exports.calculate = function(req, res) {
 
   res.json({ result: operation(req.query.operand1, req.query.operand2) });
 };
+

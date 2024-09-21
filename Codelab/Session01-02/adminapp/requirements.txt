@@ -1,0 +1,5 @@
+Flask~=3.0.3
+Flask-SQLAlchemy
+Flask-Migrate~=4.0.7
+alembic~=1.13.2
+SQLAlchemy~=2.0.35

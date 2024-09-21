@@ -1,3 +1,5 @@
+require('./helpers');
+
 describe('Arithmetic', function () {
     describe('Validation', function () {
         it('rejects missing operation', function (done) {
@@ -142,6 +144,6 @@ describe('Arithmetic', function () {
                     done();
                 });
         });
-    };
+    });
 
 });
